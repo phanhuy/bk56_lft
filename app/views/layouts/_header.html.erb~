@@ -30,11 +30,11 @@
                   <li><%= link_to 'プロフィール', current_user %></li>
                   <li><%= link_to '設定', '#' %></li>
                   <li class="divider"></li>
-                  <li><%= link_to 'ログアウト', signout, method: "delete" %></li>					
+                  <li><%= link_to 'ログアウト', '#'%></li>					
                 </ul>
               </li>
             <% else %>
-              <li><%= link_to 'ログイン', signin_path %></li>
+              <li><%= link_to 'ログイン', '#' %></li>
               <li><%= link_to '新規会員登録', signup_path %></li>
             <% end %>
             </ul>
