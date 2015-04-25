@@ -1,40 +1,20 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
+  resources :questions do
+	  resources :answers
+  end
 
-  root 'static_pages#home'
-
-  get 'help'  =>  'static_pages#help'
-
-  get 'about'  =>  'static_pages#about'
-
-  get 'signup'  =>  'users#new'
-
-  get 'signin'  =>  'sessions#new'
-
-  post 'signin' =>  'sessions#create'
-
-  delete 'signout'  => 'sessions#destroy'
-  
+	root 'static_pages#home'
+	#root 'questons#index'
+	get 'help' => 'static_pages#help'
+	get 'about' => 'static_pages#about'
+	get 'signup' => 'users#new'
+	get 'signin' => 'sessions#new'
+	post 'signin' => 'sessions#create'
+	delete 'signout' => 'sessions#destroy'
+  devise_for :users
+  resources :answers
+  get  '/answers/:answer_id' => redirect( '/questions/:question_id/answers'	)
   resources :users
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-=======
->>>>>>> 9e808061307b81aff749af2edd78c07358251ff3
-
-  root 'static_pages#home'
-
-  get 'help'  =>  'static_pages#help'
-
-  get 'about'  =>  'static_pages#about'
-
-  get 'signup'  =>  'users#new'
-
-  get 'signin'  =>  'sessions#new'
-
-  post 'signin' =>  'sessions#create'
-
-  delete 'signout'  => 'sessions#destroy'
   
-  resources :users
+  
 end

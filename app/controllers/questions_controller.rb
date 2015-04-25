@@ -5,10 +5,15 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
-    respond_with(@questions)
+    @users = User.all
+     respond_with(@questions)    
   end
 
   def show
+	  @user = User.find(@question.user_id) 
+	  @answers = Answer.where(question_id: @question.id)
+	  #@question = Question.find params[:question_id]
+    @answer = Answer.new
     respond_with(@question)
   end
 
@@ -26,6 +31,7 @@ class QuestionsController < ApplicationController
 	
   def create
     @question = Question.new(question_params)
+    @question.user_id =  current_user.id   
     @question.save
     respond_with(@question)
   end
