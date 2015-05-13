@@ -1,3 +1,8 @@
+      <% tag_cloud Tag.counts, %w{css1 css2 css3 css4} do |tag| %>
+        <%= link_to tag.name, tag_path(tag.name)%>
+      <% end %>
+
+
 <h1>Listing questions</h1>
 
 <table>
@@ -7,6 +12,7 @@
       <th class="col-md-2">Content</th>
       <th class="col-md-2">User</th>
       <th class="col-md-2">  </th>
+            <th class="col-md-2">  </th>
     </tr>
   </thead>
 
@@ -16,13 +22,14 @@
         <td><%= question.title %></td>
         <td><%= question.content %></td>
         <td><%= User.find(question.user_id).username   %></td>
+        <td><%=raw tag_links(question.all_tags)%></td>
         <td><%= link_to 'Show', question %> </td>
         <% if signed_in?%>
-        <% # if current_user.id == question.user_id  %>
+        <% if current_user.id == question.user_id  %>
 	        <td><%= link_to 'Edit', edit_question_path(question) %></td>
   	      <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
   	      </td>
-        <%# end %>
+        <% end %>
         <% end %>
       </tr>
     <% end %>

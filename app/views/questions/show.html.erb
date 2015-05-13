@@ -29,7 +29,9 @@
     <tr>
       <th class="col-md-2">Answer id</th>
       <th class="col-md-2">Content</th>
+      <th class="">Tags</th>      
       <th class="col-md-2">User</th>
+
     </tr>
   </thead>
 
@@ -38,6 +40,7 @@
       <tr>
         <td class="col-md-2"><%= answer.id %></td>
         <td class="col-md-2"><%= answer.description %></td>
+        <td><%=raw tag_links(@question.all_tags)%></td>
         <td class="col-md-2"><%= User.find(answer.user_id).username %></td>        
         <% if signed_in? %>
 		      <% if current_user.id == answer.user_id  %>

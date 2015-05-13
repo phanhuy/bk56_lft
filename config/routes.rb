@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get  '/answers/:answer_id' => redirect( '/questions/:question_id/answers'	)
   resources :users
   
+  get 'tags/:tag', to: 'questions#index', as: "tag"
   
 end

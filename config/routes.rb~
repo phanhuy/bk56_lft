@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   end
 
 	root 'static_pages#home'
-	#root 'questons#index'
 	get 'help' => 'static_pages#help'
 	get 'about' => 'static_pages#about'
 	get 'signup' => 'users#new'
