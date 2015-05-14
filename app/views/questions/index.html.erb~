@@ -12,7 +12,7 @@
       <th class="col-md-2">Content</th>
       <th class="col-md-2">User</th>
       <th class="col-md-2">  </th>
-            <th class="col-md-2">  </th>
+      <th class="col-md-2">  </th>
     </tr>
   </thead>
 
@@ -23,6 +23,9 @@
         <td><%= question.content %></td>
         <td><%= User.find(question.user_id).username   %></td>
         <td><%=raw tag_links(question.all_tags)%></td>
+        <td>  <%= link_to "Upvote", {:controller =>"questions", :action => "upvote", :id => question.id}, :class => 'btn', method: :put %></td>
+        <td>  <%= link_to "Downvote", {:controller =>"questions", :action => "downvote", :id => question.id}, :class => 'btn', method: :put %></td>   
+
         <td><%= link_to 'Show', question %> </td>
         <% if signed_in?%>
         <% if current_user.id == question.user_id  %>
@@ -32,10 +35,14 @@
         <% end %>
         <% end %>
       </tr>
+      
+     
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+
 
 <%= link_to 'New Question', new_question_path %>

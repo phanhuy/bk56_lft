@@ -22,6 +22,10 @@
 <% end %>
 
 
+<%= link_to "Upvote", {:controller =>"questions", :action => "upvote", :id => @question.id}, :class => 'btn', method: :put %>
+<%= link_to "Downvote", {:controller =>"questions", :action => "downvote", :id => @question.id}, :class => 'btn', method: :put %>
+
+
 <h3>Answers</h3>
 
 <table>
@@ -40,13 +44,15 @@
       <tr>
         <td class="col-md-2"><%= answer.id %></td>
         <td class="col-md-2"><%= answer.description %></td>
-        <td><%=raw tag_links(question.all_tags)%></td>
-        <td class="col-md-2"><%= User.find(answer.user_id).username %></td>        
+        <td><%=raw tag_links(@question.all_tags)%></td>
+        <td class="col-md-2"><%= User.find(answer.user_id).username %></td>     
+    <td>  <%= link_to "Upvote", {:controller =>"answers", :action => "upvote", :id => @answer.id}, :class => 'btn', method: :put %></td>
+        <td>  <%= link_to "Downvote", {:controller =>"answers", :action => "downvote", :id => @answer.id}, :class => 'btn', method: :put %></td>
         <% if signed_in? %>
 		      <% if current_user.id == answer.user_id  %>
 						<td>	<%= link_to 'Edit', '/questions/'+@question.id.to_s+'/answers/'+answer.id.to_s+'/edit' %>        		</td>
 			      <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %>
-			      </td>					
+			      </td>
 		      <% end %>        
        <% end %>  
       </tr>

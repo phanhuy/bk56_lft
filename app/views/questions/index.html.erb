@@ -23,6 +23,8 @@
         <td><%= question.content %></td>
         <td><%= User.find(question.user_id).username   %></td>
         <td><%=raw tag_links(question.all_tags)%></td>
+    
+
         <td><%= link_to 'Show', question %> </td>
         <% if signed_in?%>
         <% if current_user.id == question.user_id  %>
@@ -32,10 +34,14 @@
         <% end %>
         <% end %>
       </tr>
+      
+     
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+
 
 <%= link_to 'New Question', new_question_path %>

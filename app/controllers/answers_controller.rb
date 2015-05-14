@@ -42,6 +42,23 @@ class AnswersController < ApplicationController
     redirect_to '/questions/'+@temp_qid    
   end
 
+	def upvote
+		@answer = Answer.find(params[:id])
+		@answer.liked_by current_user
+		
+		@temp_qid =   @answer.question_id.to_s    
+    redirect_to '/questions/'+@temp_qid   
+	end
+
+	def downvote
+		@answer = Answer.find(params[:id])
+		@answer.downvote_from current_user
+		@temp_qid =   @answer.question_id.to_s    
+    redirect_to '/questions/'+@temp_qid   
+	end
+
+
+
   private
     def set_answer
       @answer = Answer.find(params[:id])
