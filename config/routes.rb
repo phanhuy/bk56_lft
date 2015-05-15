@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tag/list_tags'
+
   resources :questions do
 	  resources :answers
   end
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
   resources :users
   
   get 'tags/:tag', to: 'questions#index', as: "tag"
-  
+  get 'tags' => 'tag#list_tags'
   resources :links do 	 
     put "like", to: "links#upvote"
     put "dislike", to: "links#downvote"

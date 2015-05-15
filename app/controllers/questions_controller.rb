@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
     else
 	    @questions = Question.all
     end
-    
+
     @users = User.all
      respond_with(@questions)    
   end
@@ -47,10 +47,12 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    if current_user==nil then redirect_to '/signin'; return end
-      if current_user.id!=@question.user_id then redirect_to '/questions/'; return end
+    if current_user==nil then redirect_to '/signin'; 
+    	return end
+    if current_user.id!=@question.user_id then redirect_to '/questions/'; 
+      return end
     @question.destroy
-    respond_with(@question)
+   redirect_to "/questons/"
   end
 
 
@@ -78,7 +80,6 @@ class QuestionsController < ApplicationController
 		@question.downvote_from current_user
 		redirect_to @question
 	end
-	
 
   private
     def set_question

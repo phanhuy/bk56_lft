@@ -72,7 +72,7 @@
 								<%= yield %>		               
 							</div>
                <div class="catelogy">
-                    <h3>カテゴリ</h3>
+                    <h3>旅行テーマのカテゴリ</h3>
                     <ul>
                         <li>
                             <a href="#">Link 1</a>

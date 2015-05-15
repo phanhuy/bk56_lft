@@ -17,6 +17,10 @@
   <strong>User:</strong>
   <%= @user.username %>
 </p>
+<p>
+<%=raw tag_links(@question.all_tags)%>
+</p>
+
 <% if current_user == @question.user_id %>
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <% end %>
@@ -44,10 +48,10 @@
       <tr>
         <td class="col-md-2"><%= answer.id %></td>
         <td class="col-md-2"><%= answer.description %></td>
-        <td><%=raw tag_links(@question.all_tags)%></td>
+
         <td class="col-md-2"><%= User.find(answer.user_id).username %></td>     
-    <td>  <%= link_to "Upvote", {:controller =>"answers", :action => "upvote", :id => @answer.id}, :class => 'btn', method: :put %></td>
-        <td>  <%= link_to "Downvote", {:controller =>"answers", :action => "downvote", :id => @answer.id}, :class => 'btn', method: :put %></td>
+    <td>  <%= link_to "Upvote", {:controller =>"answers", :action => "upvote", :id => answer.id}, :class => 'btn', method: :put %></td>
+        <td>  <%= link_to "Downvote", {:controller =>"answers", :action => "downvote", :id => answer.id}, :class => 'btn', method: :put %></td>
         <% if signed_in? %>
 		      <% if current_user.id == answer.user_id  %>
 						<td>	<%= link_to 'Edit', '/questions/'+@question.id.to_s+'/answers/'+answer.id.to_s+'/edit' %>        		</td>
