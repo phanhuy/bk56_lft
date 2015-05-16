@@ -10,6 +10,11 @@ class QuestionsController < ApplicationController
 	    @questions = Question.all
     end
 
+		if params[:search]
+      @questions = Question.search(params[:search]).order("created_at DESC")    
+    end
+
+
     @users = User.all
      respond_with(@questions)    
   end
@@ -52,7 +57,7 @@ class QuestionsController < ApplicationController
     if current_user.id!=@question.user_id then redirect_to '/questions/'; 
       return end
     @question.destroy
-   redirect_to "/questons/"
+   redirect_to "/questions"
   end
 
 

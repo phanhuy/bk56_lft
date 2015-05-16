@@ -14,11 +14,22 @@
             <nav class="">
                 <ul class="nav navbar-nav">
   
-   <li><%= link_to 'ホーム', root_path %></li>
-              <li><%= link_to '質問', '/questions' %></li>              
+					   <li><%= link_to 'ホーム', root_path %></li>          
                 <li><%= link_to 'ヘルプ', help_path %></li>
                 <li><%= link_to 'TravelAskについて', about_path %></li>
                 </ul>
+                
+                                 
+  <%= form_tag(questions_path, :method => "get", class: "navbar-form navbar-left form-search", id: "search-form", role:"search") do %>
+      <%= text_field_tag :search, params[:search], class: "searchfield", placeholder: "検索",id:"searchbox" %>
+      <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
+           of using a Rails form helper -->
+				        <button class="searchbutton" type="submit">
+				            <i class="glyphicon glyphicon-search"></i>
+				        </button>
+  <% end %>
+                                         
+                                       
                 <ul class="nav navbar-nav navbar-right">
           
             <% if signed_in? %>
@@ -35,6 +46,10 @@
               <li><%= link_to 'サインイン', signin_path %></li>
               <li><%= link_to '新規会員登録', signup_path %></li>
             <% end %>
+            
+            
+            
+            
                 </ul>
             </nav>
     </div>

@@ -1,3 +1,11 @@
+<h1>質問一覧表</h1>
+
+
+  
+  
+
+
+
       <% @questions.each do |question| %>
               <div class="question-summary">
                         <div class="cp">
@@ -22,10 +30,10 @@
                         </div>
                         <div class="sumary">
                             <p>
-                                <a href="<%= "questions/"+question.id.to_s%>"><%= question.title %></a>
+                                <a href="<%= "/questions/"+question.id.to_s%>"><%= question.title %></a>
                             </p>
                             <% if(@votes.count>=1)  %>
-		                          <div class="tags">タグ: 
+		                          <div class="tags"> 
 			                         <%=raw tag_links(question.all_tags)%>
 		                          </div>
                             <% end %>

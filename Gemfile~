@@ -32,4 +32,5 @@ gem 'spring', group: :development
 gem "devise"
 gem 'bootstrap-sass', '3.2.0.2'
 gem 'acts_as_votable'
-gem 'make_voteable'
+gem 'bootstrap-glyphicons'
+gem 'font-awesome-sass', '~> 4.3.0'

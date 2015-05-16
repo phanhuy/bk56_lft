@@ -1,0 +1,23 @@
+
+<% provide(:title, @user.username) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+		<h1>
+		  <%= gravatar_for @user %>
+		  <%= @user.username %>
+		</h1>
+		<%= @user.email %>
+    </section>
+  </aside>
+</div>
+
+
+<h2>作った質問</h2>
+<div>
+	<ul>
+	 <% @questions.each do |question| %>
+	 	<li><a href="<%= "/questions/"+question.id.to_s %>"><%= question.title %></a> </li>
+	 <% end %>
+	 </ul>
+</div>

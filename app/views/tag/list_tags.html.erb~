@@ -1,2 +1,4 @@
-<h1>Tag#list_tags</h1>
-<p>Find me in app/views/tag/list_tags.html.erb</p>
+      <% tag_cloud Tag.counts, %w{css1 css2 css3 css4} do |tag| %>
+        <%= link_to tag.name, tag_path(tag.name)%>
+      <% end %>
+

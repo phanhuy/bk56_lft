@@ -1,0 +1,99 @@
+.note-editor, .note-editable {
+    height: auto;
+    min-height: 300px;
+}
+
+.votecell {
+    vertical-align: top;
+    padding-right: 15px;
+}
+
+#question .postcell {
+    vertical-align: top;
+}
+
+.postcell table {
+    width: 100%;
+}
+
+.votecell .vote {
+    min-width: 46px;
+}
+.vote {
+    text-align: center;
+}
+
+.vote-up {
+    font-size: 2.5em;
+    color: rgba(6, 165, 87, 0.5);
+    cursor: pointer;
+    display: block;
+}
+
+.vote-up:hover {
+    color: rgba(6, 165, 87, 0.9);
+}
+
+.vote-down {
+    font-size: 2.5em;
+    color: rgba(180, 7, 1, 0.5);
+    cursor: pointer;
+    display: block;
+}
+
+.vote-down:hover {
+    color: rgba(180, 7, 1, 0.9);
+}
+
+.vote-count {
+    font-size: 2em;
+    color: #757575;
+    display: block;
+}
+
+.user-info {
+    height: 35px;
+    width: 190px;
+}
+
+.user-info-time {
+    margin-top: 2px;
+    margin-bottom: 4px;
+    float: left;
+    width: 100%;
+}
+.user-info-detail {
+    width: 100%;
+    float: left;
+}
+
+.user-info-pic {
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    float: right;
+}
+.user-info-name {
+    float: right;
+    margin-left: 5px;
+    width: 85px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.gravatar {
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+}
+
+#answers-header {
+    color: #666;
+}
+
+.edit-link{
+    float: right;
+margin-top: -50px;
+}

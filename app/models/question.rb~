@@ -3,7 +3,7 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_many :taggings
   has_many :tags, through: :taggings
-	has_many :votes, dependent: :destroy
+	has_many :votes
 	
 	acts_as_votable
 	
@@ -21,4 +21,10 @@ class Question < ActiveRecord::Base
   def self.tagged_with(name)
     Tag.find_by_name!(name).questions
   end
+  
+  def self.search(query)
+    # where(:title, query) -> This would return an exact match of the query
+    where("title like ?", "%#{query}%") 
+  end
+  
 end

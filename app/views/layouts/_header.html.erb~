@@ -1,0 +1,65 @@
+
+
+    <header class="navbar navbar-static-top bs-nav" id="top" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="../" class="navbar-brand">Travel ASK</a>
+            </div>
+            <nav class="">
+                <ul class="nav navbar-nav">
+  
+					   <li><%= link_to 'ホーム', root_path %></li>          
+                <li><%= link_to 'ヘルプ', help_path %></li>
+                <li><%= link_to 'TravelAskについて', about_path %></li>
+                </ul>
+                
+			  <form class="navbar-form navbar-left form-search" role="search">		      
+						      <input class="searchfield" id="searchbox" type="text" placeholder="検索">
+				        <button class="searchbutton" type="submit">
+				            <i class="glyphicon glyphicon-search"></i>
+				        </button>
+						  </form>
+                                       
+                                 
+                                 
+  <%= form_tag(questions_path, :method => "get", class: "navbar-form navbar-left form-search", id: "search-form", role:"search") do %>
+      <%= text_field_tag :search, params[:search], class: "searchfield", placeholder: "検索",id:"searchbox" %>
+      <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
+           of using a Rails form helper -->
+				        <button class="searchbutton" type="submit">
+				            <i class="glyphicon glyphicon-search"></i>
+				        </button>
+  <% end %>
+                                         
+                                       
+                <ul class="nav navbar-nav navbar-right">
+          
+            <% if signed_in? %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= username %> <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to 'プロフィール', current_user %></li>
+                  <li><%= link_to '設定', '#' %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to 'サインアウト', signout_path, method: "delete" %></li>					
+                </ul>
+              </li>
+            <% else %>
+              <li><%= link_to 'サインイン', signin_path %></li>
+              <li><%= link_to '新規会員登録', signup_path %></li>
+            <% end %>
+            
+            
+            
+            
+                </ul>
+            </nav>
+    </div>
+</header>
+
