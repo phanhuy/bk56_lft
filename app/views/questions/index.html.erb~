@@ -1,11 +1,5 @@
 <h1>質問一覧表</h1>
 
-
-  
-  
-
-
-
       <% @questions.each do |question| %>
               <div class="question-summary">
                         <div class="cp">
@@ -53,3 +47,4 @@
                      
       <% end %>
       
+      <%= will_paginate @questions, renderer: BootstrapPagination::Rails %>

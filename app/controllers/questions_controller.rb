@@ -3,18 +3,19 @@ class QuestionsController < ApplicationController
 
   respond_to :html
 
-  def index
+  def index	
+  
     if params[:tag]
-      @questions = Question.tagged_with(params[:tag])
+      @questions = Question.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 3)
     else
-	    @questions = Question.all
+			  @questions = Question.paginate(:page => params[:page], :per_page => 3)
     end
 
 		if params[:search]
-      @questions = Question.search(params[:search]).order("created_at DESC")    
+      @questions = Question.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 2)   
     end
 
-
+  	
     @users = User.all
      respond_with(@questions)    
   end
