@@ -62,12 +62,14 @@ class QuestionsController < ApplicationController
 
 
 	def upvote
+	if current_user==nil then redirect_to '/signin'; return end
 		@question = Question.find(params[:id])
 		@question.liked_by current_user
 		redirect_to @question
 	end
 
 	def downvote
+	if current_user==nil then redirect_to '/signin'; return end
 		@question = Question.find(params[:id])
 		@question.downvote_from current_user
 		redirect_to @question
@@ -75,12 +77,14 @@ class QuestionsController < ApplicationController
 
 
 	def upvote_answer
+	if current_user==nil then redirect_to '/signin'; return end
 		@question = Question.find(params[:id])
 		@question.liked_by current_user
 		redirect_to @question
 	end
 
 	def downvote_answer
+	if current_user==nil then redirect_to '/signin'; return end
 		@question = Question.find(params[:id])
 		@question.downvote_from current_user
 		redirect_to @question

@@ -18,7 +18,7 @@
 <h2>作った質問</h2>
 	<ul>
 	 <% @questions.each do |question| %>
-	 	<li><a href="<%= "/questions/"+question.id.to_s %>"><%= question.title %></a> </li>
+	 	<li class="user-questions"><a href="<%= "/questions/"+question.id.to_s %>"><%= question.title %></a> </li>
 	 <% end %>
 	 </ul>
 </div>

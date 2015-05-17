@@ -1,10 +1,13 @@
 
 <h1><span class="glyphicon glyphicon-question-sign"></span> <%= @question.title %> </h1>
 
-<% if current_user == @question.user_id %>
-	<a class="btn edit-link" href="/questions/<%= @question.id %>/edit">Edit</a>
-<% end %>
+<% if signed_in? %>
 
+<% if current_user.id == @question.user_id %>
+	<a class="btn edit-link" href="/questions/<%= @question.id %>/edit">編集</a>
+	<a class="btn delete-link" data-confirm="Are you sure?" data-method="delete" href="/questions/<%= @question.id %>" rel="nofollow">削除</a>	
+<% end %>
+<% end %>
 
 <p id="notice"><%= notice %></p>
 
@@ -92,7 +95,7 @@
                         <td class="postcell">
                             <div class="post-content">
                                 <p>
-                                   <%= answer.description %>
+                                   <%= h(answer.description) %>
                                 </p>
                             </div>
                             <table>
@@ -138,19 +141,14 @@
 
 	<%= form_for([@question,@answer]) do |f| %>
 		<div class="field">
-		  <%= f.label :description %><br>
 		  <textarea id="answer_description" class="form-control" name="answer[description]"></textarea>
 		</div>
 		<div class="actions">
-		  <%= f.submit %>
+		  <input name="commit" value="アンサー" type="submit">
 		</div>
 	<% end %>
 <% end %>
         
     </div>
     
-    
-    
-    
-
-
+   

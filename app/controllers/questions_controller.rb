@@ -6,13 +6,13 @@ class QuestionsController < ApplicationController
   def index	
   
     if params[:tag]
-      @questions = Question.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 3)
+      @questions = Question.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 5)
     else
-			  @questions = Question.paginate(:page => params[:page], :per_page => 3)
+			  @questions = Question.paginate(:page => params[:page], :per_page => 5)
     end
 
 		if params[:search]
-      @questions = Question.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 2)   
+      @questions = Question.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 5)   
     end
   	
     @users = User.all
@@ -62,12 +62,14 @@ class QuestionsController < ApplicationController
 
 
 	def upvote
+	if current_user==nil then redirect_to '/signin'; return end
 		@question = Question.find(params[:id])
 		@question.liked_by current_user
 		redirect_to @question
 	end
 
 	def downvote
+	if current_user==nil then redirect_to '/signin'; return end
 		@question = Question.find(params[:id])
 		@question.downvote_from current_user
 		redirect_to @question
@@ -75,12 +77,14 @@ class QuestionsController < ApplicationController
 
 
 	def upvote_answer
+	if current_user==nil then redirect_to '/signin'; return end
 		@question = Question.find(params[:id])
 		@question.liked_by current_user
 		redirect_to @question
 	end
 
 	def downvote_answer
+	if current_user==nil then redirect_to '/signin'; return end
 		@question = Question.find(params[:id])
 		@question.downvote_from current_user
 		redirect_to @question

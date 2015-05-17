@@ -1,0 +1,56 @@
+
++BRAKEMAN REPORT+
+
+Application path: /home/phanhuy/Downloads/bk56_lft_ok
+Rails version: 4.1.0
+Brakeman version: 3.0.3
+Started at 2015-05-17 23:15:39 +0700
+Duration: 1.309744574 seconds
+Checks run: BasicAuth, ContentTag, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NumberToCurrency, QuoteTableName, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, StripTags, SymbolDoSCVE, TranslateBug, UnsafeReflection, ValidationRegex, WithoutProtection, YAMLParsing
+
+
++SUMMARY+
+
++-------------------+-------+
+| Scanned/Reported  | Total |
++-------------------+-------+
+| Controllers       | 9     |
+| Models            | 8     |
+| Templates         | 31    |
+| Errors            | 0     |
+| Security Warnings | 8 (0) |
++-------------------+-------+
+
++-----------------------+-------+
+| Warning Type          | Total |
++-----------------------+-------+
+| Cross Site Scripting  | 2     |
+| Mass Assignment       | 1     |
+| Redirect              | 4     |
+| Remote Code Execution | 1     |
++-----------------------+-------+
+
+
++SECURITY WARNINGS+
+
++------------+-------------------+----------+-----------------------+------------------------------------------------------------------------->>
+| Confidence | Class             | Method   | Warning Type          | Message                                                                 >>
++------------+-------------------+----------+-----------------------+------------------------------------------------------------------------->>
+| Medium     |                   |          | Mass Assignment       | create_with is vulnerable to strong params bypass. Upgrade to Rails 4.1.>>
+| Medium     |                   |          | Remote Code Execution | Rails 4.1.0 with globbing routes is vulnerable to directory traversal an>>
+| Weak       | AnswersController | update   | Redirect              | Possible unprotected redirect near line 36: redirect_to(("/questions/" +>>
+| Weak       | AnswersController | destroy  | Redirect              | Possible unprotected redirect near line 42: redirect_to(("/questions/" +>>
+| Weak       | AnswersController | upvote   | Redirect              | Possible unprotected redirect near line 50: redirect_to(("/questions/" +>>
+| Weak       | AnswersController | downvote | Redirect              | Possible unprotected redirect near line 57: redirect_to(("/questions/" +>>
++------------+-------------------+----------+-----------------------+------------------------------------------------------------------------->>
+
+
+View Warnings:
+
++------------+-------------------------------------------+----------------------+------------------------------------------------------------->>
+| Confidence | Template                                  | Warning Type         | Message                                                     >>
++------------+-------------------------------------------+----------------------+------------------------------------------------------------->>
+| Medium     | questions/show (QuestionsController#show) | Cross Site Scripting | Unsafe model attribute in link_to href near line 106: link_t>>
+| Weak       | questions/show (QuestionsController#show) | Cross Site Scripting | Unescaped model attribute near line 38: tag_links(+Question.>>
++------------+-------------------------------------------+----------------------+------------------------------------------------------------->>
+

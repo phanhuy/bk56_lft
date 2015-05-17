@@ -4,7 +4,8 @@
 <% if signed_in? %>
 
 <% if current_user.id == @question.user_id %>
-	<a class="btn edit-link" href="/questions/<%= @question.id %>/edit">Edit</a>
+	<a class="btn edit-link" href="/questions/<%= @question.id %>/edit">編集</a>
+	<a class="btn delete-link" data-confirm="Are you sure?" data-method="delete" href="/questions/<%= @question.id %>" rel="nofollow">削除</a>	
 <% end %>
 <% end %>
 
@@ -140,19 +141,14 @@
 
 	<%= form_for([@question,@answer]) do |f| %>
 		<div class="field">
-		  <%= f.label :description %><br>
 		  <textarea id="answer_description" class="form-control" name="answer[description]"></textarea>
 		</div>
 		<div class="actions">
-		  <%= f.submit %>
+		  <input name="commit" value="アンサー" type="submit">
 		</div>
 	<% end %>
 <% end %>
         
     </div>
     
-    
-    
-    
-
-
+   

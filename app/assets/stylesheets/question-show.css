@@ -96,4 +96,26 @@
 .edit-link{
     float: right;
 margin-top: -50px;
+margin-right: 60px;
+}
+
+.delete-link{
+    float: right;
+margin-top: -50px;
+}
+
+.save-edit-profile{
+    margin-top: 20px;
+}
+
+.user-questions{
+    list-style: none;
+margin-left: 140px;
+font-size: 16px;
+margin-bottom: 10px;
+}
+
+.pagination{
+    float: right;
+margin-right: 100px;
 }

@@ -15,18 +15,10 @@
                 <ul class="nav navbar-nav">
   
 					   <li><%= link_to 'ホーム', root_path %></li>          
-                <li><%= link_to 'ヘルプ', help_path %></li>
+                <li><%= link_to 'ヘルプ', help_path %></li>                
                 <li><%= link_to 'TravelAskについて', about_path %></li>
                 </ul>
                 
-			  <form class="navbar-form navbar-left form-search" role="search">		      
-						      <input class="searchfield" id="searchbox" type="text" placeholder="検索">
-				        <button class="searchbutton" type="submit">
-				            <i class="glyphicon glyphicon-search"></i>
-				        </button>
-						  </form>
-                                       
-                                 
                                  
   <%= form_tag(questions_path, :method => "get", class: "navbar-form navbar-left form-search", id: "search-form", role:"search") do %>
       <%= text_field_tag :search, params[:search], class: "searchfield", placeholder: "検索",id:"searchbox" %>
@@ -45,7 +37,8 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= username %> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to 'プロフィール', current_user %></li>
-                  <li><%= link_to '設定', '#' %></li>
+                  <li><%= link_to '設定', "/users/"+@current_user.id.to_s+"/edit" %></li>
+									<%= link_to "Settings", edit_user_path(current_user) %>                  
                   <li class="divider"></li>
                   <li><%= link_to 'サインアウト', signout_path, method: "delete" %></li>					
                 </ul>

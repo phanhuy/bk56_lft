@@ -1,6 +1,6 @@
 
 <% provide(:title, @user.username) %>
-<div class="row">
+<div class="row" style="float:left;">
   <aside class="col-md-4">
     <section class="user_info">
 		<h1>
@@ -13,8 +13,9 @@
 </div>
 
 
-<h2>作った質問</h2>
+
 <div>
+<h2>作った質問</h2>
 	<ul>
 	 <% @questions.each do |question| %>
 	 	<li><a href="<%= "/questions/"+question.id.to_s %>"><%= question.title %></a> </li>

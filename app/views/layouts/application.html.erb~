@@ -14,7 +14,7 @@
 	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	  <%= csrf_meta_tags %>
 	  <%= render 'layouts/shim' %>
-	  <link data-turbolinks-track="true"  rel="shortcut icon" href="/assets/favicon.ico" />
+	  <link data-turbolinks-track="true"  rel="shortcut icon" href="/assets/favicon_128.png" />
 	</head>
 <body>
 		<%= render 'layouts/header' %>
@@ -74,30 +74,7 @@
                <div class="catelogy">
 		
                     <h3 style="margin-left: 30px;">カテゴリ</h3>
-                    <ul>
-                        <li>
-                            <a href="#">旅行経験</a>
-                        </li>
-                        <li>
-                            <a href="#">海外旅行</a>
-                        </li>
-                        <li>
-                            <a href="#">温泉</a>
-                        </li>
-                        <li>
-                            <a href="#">お花見</a>
-                        </li>
-                        <li>
-                            <a href="#">お祭り</a>
-                        </li>
-                        <li>
-                            <a href="#">旅行の準備</a>
-                        </li>
-                        <li>
-                            <a href="#">ベトナム</a>
-                        </li>                        
-                        
-                        
+                    <ul>                       
 						                <% categories.each do |f| %>
             	                <li ><%=link_to f.CategoryName,"/categories/"+f.id.to_s %></li>
                             <%end%>        
