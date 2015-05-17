@@ -59,7 +59,7 @@
 		                      <a href="#"><span class="glyphicon glyphicon-gift"></span>未回答</a>
 		                  </li>
                     <li>
-	                    <a href="/questions/new"><span class="glyphicon glyphicon-edit"></span><b>質問する</b></a>
+	                    <a href="/questions/new" class="make-question"><span class="glyphicon glyphicon-edit"></span>質問する</a>
                     </li>
 		                    
                 </ul>
@@ -96,6 +96,12 @@
                         <li>
                             <a href="#">ベトナム</a>
                         </li>                        
+                        
+                        
+						                <% categories.each do |f| %>
+            	                <li ><%=link_to f.CategoryName,"/categories/"+f.id.to_s %></li>
+                            <%end%>        
+
                     </ul>
                 </div>
             </div>

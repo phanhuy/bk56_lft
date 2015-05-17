@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>  <%= @category.CategoryName %></h1>
+
+      <% @questions.each do |question| %>
+              <div class="question-summary">
+                        <div class="cp">
+                            <div class="votes">
+                                <div class="mini-counts">
+                                <% if(question.id != nil) %>
+                                <% @votes = Vote.where(votable_id: question.id, votable_type: "Question", vote_flag: 1) %>
+                                <% end %>
+                                    <span><%= @votes.count %></span>
+                                </div>
+                                <div>votes</div>
+                            </div>
+                            <div class="answered">
+                                <div class="mini-counts">
+                                			<% @answers = Answer.where(question_id: question.id) %>
+                                    <span><%= @answers.count %></span>
+                                </div>
+                                <div>answers</div>
+                            </div>                        
+                            <div class="question-author">Created by <%= User.find(question.user_id).username   %> </div>
+       
+                        </div>
+                        <div class="sumary">
+                            <p>
+                                <a href="<%= "/questions/"+question.id.to_s%>"><%= question.title %></a>
+                            </p>
+                            <% if(@votes.count>=1)  %>
+		                          <div class="tags"> 
+			                         <%=raw tag_links(question.all_tags)%>
+		                          </div>
+                            <% end %>
+                            <div class="started question-action">
+                                   <%= link_to 'もっと詳しく', question %> 
+																<% if signed_in?%>
+																<% if current_user.id == question.user_id  %>
+																	<%= link_to '編集', edit_question_path(question) %>
+																	<%= link_to '削除', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+																<% end %>
+																<% end %>
+                            </div>
+                        </div>
+                        
+                    </div>
+                     
+      <% end %>
+      

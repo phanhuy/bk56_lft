@@ -29,5 +29,6 @@ Rails.application.routes.draw do
   put '/questions/:id/answers/:id/:action' => 'answers#upvote'
 	put '/questions/:id/answers/:id/:action' => 'answers#downvote'
 	
+  resources :categories	
 	
 end

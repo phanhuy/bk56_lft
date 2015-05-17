@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :all_tags %><br>
-    <%= f.text_field :all_tags %>
+    <%= f.text_field :all_tags , placeholder: "Tags separated with comma" %>
   </div>  
 
   <div class="actions">

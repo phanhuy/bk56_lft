@@ -14,7 +14,6 @@ class QuestionsController < ApplicationController
 		if params[:search]
       @questions = Question.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 2)   
     end
-
   	
     @users = User.all
      respond_with(@questions)    
@@ -93,6 +92,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:title, :content, :user_id, :all_tags)
+      params.require(:question).permit(:title, :content, :user_id, :all_tags, :category_id)
     end
 end

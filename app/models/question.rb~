@@ -27,4 +27,9 @@ class Question < ActiveRecord::Base
     where("title like ?", "%#{query}%") 
   end
   
+  
+  def self.categoryselect(query)
+    # where(:title, query) -> This would return an exact match of the query
+    where(category_id = ", "%#{query}%") 
+  end  
 end

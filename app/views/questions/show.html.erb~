@@ -1,7 +1,7 @@
 
 <h1><span class="glyphicon glyphicon-question-sign"></span> <%= @question.title %> </h1>
 
-<% if current_user.id == @question.user_id %>
+<% if current_user == @question.user_id %>
 	<a class="btn edit-link" href="/questions/<%= @question.id %>/edit">Edit</a>
 <% end %>
 
@@ -43,7 +43,7 @@
                                         <div class="user-info">
                                             <div class="user-info-detail">
                                                 <div class="user-info-name">
-                                                    <a href="/"><%= @user.username %></a>
+                                                    <a href="<%= "/users/" + @user.id.to_s%>"><%= @user.username %></a>
                                                 </div>
                                                 <div class="user-info-pic">
                                                     <span class="glyphicon glyphicon-user">

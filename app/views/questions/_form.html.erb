@@ -24,6 +24,11 @@
     <%= f.text_field :all_tags , placeholder: "Tags separated with comma" %>
   </div>  
 
+   <div class="field">
+    <%= f.label :category_id %><br>
+    <%= f.select( :category_id, Category.all.map {|p| [p.CategoryName,p.id]}.uniq,:prompt => "Select a Category") %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
